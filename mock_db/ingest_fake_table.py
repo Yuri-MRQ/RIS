@@ -6,6 +6,9 @@ def ingest_fake_tables():
     conn = sqlite3.connect('mock_db/food_data.db')
     cursor = conn.cursor()
 
+    # drop table if exists
+    cursor.execute('DROP TABLE IF EXISTS food_dish')
+
     # Create the food_dish table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS food_dish (
@@ -18,6 +21,9 @@ def ingest_fake_tables():
     ''')
 
     # Create the food_items table
+    # drop table if exists
+    cursor.execute('DROP TABLE IF EXISTS food_items')
+    
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS food_items (
             id INTEGER PRIMARY KEY,
